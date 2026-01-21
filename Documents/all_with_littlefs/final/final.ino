@@ -19,6 +19,8 @@
 #include <vector>
 #include <WebServer.h>
 #include <ArduinoJson.h>
+#include <algorithm>
+
 
 // ------------------ WIFI ------------------
 const char* WIFI_SSID = "Issa";
@@ -297,9 +299,9 @@ setInterval(() => {
 </html>
 )rawliteral";
 
-#include <WebServer.h>
-WebServer server(80);
 
+WebServer server(80);
+void queueLog(String user, String eventType);
 void setupWebServer() {
   server.on("/", [](){ server.send(200, "text/html", htmlPage); });
 
@@ -598,6 +600,7 @@ void setup() {
   scale.begin(HX_DT, HX_SCK);
   scale.set_scale(102631.0);
   scale.tare();
+  float initial = scale.get_units(10);
   for(int i = 0; i < HX_SMOOTH_SAMPLES; i++) weightBuffer[i] = 0;
 
 
@@ -630,7 +633,7 @@ File logFileReader;
 bool logReaderOpen = false;
 
 void loop() {
-
+server.handleClient();
   // ---- Non-blocking buzzer ----
   if (buzzerEnd != 0 && millis() > buzzerEnd) {
     noTone(BUZZER);
