@@ -18,7 +18,7 @@
       """"
   the documentation of the work is also presented in the folder. Learn and grow. If you have any question feel free to contact me via the link below
 
-        https://githua.pythonanywhere.com/contact/
-        Author: Josiah Mwangi
-        Title:Real time smart shelf inventroy tracking system
-        Date: 21st january 2026
+# https://githua.pythonanywhere.com/contact/
+# Author: Josiah Mwangi
+# Title:Real time smart shelf inventroy tracking system
+# Date: 21st january 2026
